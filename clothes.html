@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toro</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="clothes.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+    <header>
+        <div class="header__bar">Free Shipping on Orders Over $50</div>
+        <nav class="nav-bar">
+            <a href="home.html" class="nav-logo">Toro</a>
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li class="link"><a href="home.html" ">HOME</a></li>
+                <li class="link"><a href="clothes.html" class="active">CLOTHES</a></li>
+                <li class="link"><a href="contact.html">CONTACT US</a></li>
+            </ul>
+
+            <!-- Navigation Icons -->
+            <div class="nav-icons">
+                <span><a href="account.html" class="user-link"><i class="fa-regular fa-user"></i></a></span>
+                <span id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span class="cart-icon" id="cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </span>
+                <span class="fav-icon" id="fav-icon">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="fav-count" id="fav-count">0</span>
+                </span>
+                <!-- Burger Menu Icon -->
+                <span class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></span>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Nav Search Dropdown -->
+    <div class="nav-search" id="nav-search">
+        <div class="nav-search-inner">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="nav-search-input" placeholder="Search products or categories" autocomplete="off" />
+            <div class="suggestions" id="nav-suggestions"></div>
+            <button class="nav-search-close" id="nav-search-close" aria-label="Close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="close-cart">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-amount" id="total-amount">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Checkout</button>
+        </div>
+    </div>
+    
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    
+    <!-- Product Modal -->
+    <div class="product-modal" id="product-modal" aria-hidden="true">
+         <div class="product-modal-overlay" id="product-modal-overlay"></div>
+         <div class="product-modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
+             <button class="product-modal-close" id="product-modal-close" aria-label="Close">
+                 <i class="fa-solid fa-times"></i>
+             </button>
+             <div class="product-modal-body">
+                 <div class="product-modal-images">
+                     <img id="modal-product-image" src="" alt="Product image" />
+                 </div>
+                 <div class="product-modal-info">
+                     <h3 id="modal-product-name"></h3>
+                     <p class="product-category" id="modal-product-category"></p>
+                     <div class="rating-row">
+                         <div class="stars" id="modal-stars"></div>
+                         <span class="reviews" id="modal-reviews">(128 reviews)</span>
+                     </div>
+                     <div class="sku-stock">
+                         <span class="sku" id="modal-sku"></span>
+                         <span class="stock-badge" id="modal-stock">In stock</span>
+                     </div>
+                     <div class="product-modal-price">
+                         <span class="current-price" id="modal-product-price"></span>
+                         <span class="old-price" id="modal-product-old-price"></span>
+                     </div>
+                     <p class="product-description" id="modal-product-description">Discover premium quality and modern design. Crafted for comfort and style in every detail.</p>
+                     <div class="size-options">
+                         <label>Size:</label>
+                         <div class="size-buttons" id="modal-size-buttons">
+                             <button class="size-btn" data-size="S">S</button>
+                             <button class="size-btn active" data-size="M">M</button>
+                             <button class="size-btn" data-size="L">L</button>
+                             <button class="size-btn" data-size="XL">XL</button>
+                         </div>
+                     </div>
+                     <div class="color-options">
+                         <label>Color:</label>
+                         <div class="color-buttons" id="modal-color-buttons"></div>
+                     </div>
+                     <div class="quantity-control">
+                         <button class="quantity-btn" id="modal-qty-minus" aria-label="Decrease quantity">-</button>
+                         <span id="modal-qty">1</span>
+                         <button class="quantity-btn" id="modal-qty-plus" aria-label="Increase quantity">+</button>
+                     </div>
+                     <button class="add-to-cart" id="modal-add-to-cart">Add to Cart</button>
+                     <div class="details-box">
+                         <h4>Details</h4>
+                         <ul class="features-list">
+                             <li>Soft, breathable fabric</li>
+                             <li>Modern tailored fit</li>
+                             <li>Durable stitching</li>
+                             <li>Everyday comfort</li>
+                         </ul>
+                         <div class="meta-pairs">
+                             <p><strong>Material:</strong> 95% Cotton, 5% Elastane</p>
+                             <p><strong>Care:</strong> Machine wash cold, tumble dry low</p>
+                             <p><strong>Shipping:</strong> Free over $50, 30-day returns</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+    <!-- Favorites Sidebar -->
+    <div class="favorites-sidebar" id="favorites-sidebar">
+        <div class="cart-header">
+            <h3>Favorites</h3>
+            <button class="close-cart" id="close-favorites" aria-label="Close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="favorites-items">
+            <!-- Favorite items will be dynamically added here -->
+        </div>
+    </div>
+    <div class="favorites-overlay" id="favorites-overlay"></div>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Style</h1>
+            <p>Explore our latest collection of trendy clothing and accessories</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            
+            <div class="products-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <h3 class="sidebar-title">Filters</h3>
+                    
+                    <div class="filter-group">
+                        <label for="search-input">Search:</label>
+                        <input id="search-input" type="search" class="filter-input" placeholder="Search products or categories" autocomplete="off" />
+                        <div class="suggestions" id="sidebar-suggestions"></div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="sort-by">Sort by:</label>
+                        <select id="sort-by" class="filter-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name-az">Name: A to Z</option>
+                            <option value="name-za">Name: Z to A</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="availability">Availability:</label>
+                        <select id="availability" class="filter-select">
+                            <option value="all">All Items</option>
+                            <option value="in-stock">In Stock</option>
+                            <option value="out-of-stock">Out of Stock</option>
+                            <option value="pre-order">Pre-Order</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="price-range">Price Range:</label>
+                        <select id="price-range" class="filter-select">
+                            <option value="all">All Prices</option>
+                            <option value="0-25">$0 - $25</option>
+                            <option value="25-50">$25 - $50</option>
+                            <option value="50-75">$50 - $75</option>
+                            <option value="75-100">$75 - $100</option>
+                            <option value="100+">$100+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter">Category:</label>
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="footwear">Footwear</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+                </aside>
+                
+                <!-- Product Grid -->
+                <div class="product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/banner-3.png" alt="Casual T-Shirt">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Casual T-Shirt</h3>
+                        <p class="product-category">Clothing</p>
+                        <div class="product-price">
+                            <span class="current-price">$29.99</span>
+                            <span class="old-price">$39.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="black" style="background-color: #000;"></button>
+                                    <button class="color-btn" data-color="white" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                                    <button class="color-btn" data-color="blue" style="background-color: #007bff;"></button>
+                                    <button class="color-btn" data-color="red" style="background-color: #dc3545;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/WhatsApp Image 2025-08-05 at 3.05.55 PM.jpeg" alt="Denim Jeans">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Denim Jeans</h3>
+                        <p class="product-category">Clothing</p>
+                        <div class="product-price">
+                            <span class="current-price">$59.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="blue" style="background-color: #007bff;"></button>
+                                    <button class="color-btn" data-color="black" style="background-color: #000;"></button>
+                                    <button class="color-btn" data-color="gray" style="background-color: #6c757d;"></button>
+                                    <button class="color-btn" data-color="white" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/WhatsApp Image 2025-08-05 at 3.05.57 PM.jpeg" alt="Hoodie">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Comfortable Hoodie</h3>
+                        <p class="product-category">Clothing</p>
+                        <div class="product-price">
+                            <span class="current-price">$44.99</span>
+                            <span class="old-price">$54.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="gray" style="background-color: #6c757d;"></button>
+                                    <button class="color-btn" data-color="black" style="background-color: #000;"></button>
+                                    <button class="color-btn" data-color="navy" style="background-color: #001f3f;"></button>
+                                    <button class="color-btn" data-color="green" style="background-color: #28a745;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/xqhorhc0g0zegple3jv0ymrlxfwy.webp" alt="Sneakers">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Stylish Sneakers</h3>
+                        <p class="product-category">Footwear</p>
+                        <div class="product-price">
+                            <span class="current-price">$79.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="white" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                                    <button class="color-btn" data-color="black" style="background-color: #000;"></button>
+                                    <button class="color-btn" data-color="red" style="background-color: #dc3545;"></button>
+                                    <button class="color-btn" data-color="blue" style="background-color: #007bff;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/banner-3.png" alt="Summer Dress">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Summer Dress</h3>
+                        <p class="product-category">Clothing</p>
+                        <div class="product-price">
+                            <span class="current-price">$34.99</span>
+                            <span class="old-price">$44.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="pink" style="background-color: #e83e8c;"></button>
+                                    <button class="color-btn" data-color="yellow" style="background-color: #ffc107;"></button>
+                                    <button class="color-btn" data-color="blue" style="background-color: #007bff;"></button>
+                                    <button class="color-btn" data-color="white" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/WhatsApp Image 2025-08-05 at 3.05.55 PM.jpeg" alt="Formal Shirt">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Formal Shirt</h3>
+                        <p class="product-category">Clothing</p>
+                        <div class="product-price">
+                            <span class="current-price">$49.99</span>
+                        </div>
+                        <div class="product-actions">
+                            <div class="color-options">
+                                <label>Color:</label>
+                                <div class="color-buttons">
+                                    <button class="color-btn active" data-color="white" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                                    <button class="color-btn" data-color="blue" style="background-color: #007bff;"></button>
+                                    <button class="color-btn" data-color="pink" style="background-color: #e83e8c;"></button>
+                                    <button class="color-btn" data-color="black" style="background-color: #000;"></button>
+                                </div>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+          <div class="first-info">
+            <a href="#" class="footer-logo">Toro</a>
+
+            <p>325 5th Avenue, New York, NY 10001</p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: info@toro.com</p>
+
+            <div class="social-icon">
+              <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="second-info">
+            <h4>Information</h4>
+            <p><a href="home.html">Home</a></p>
+            <p><a href="clothes.html">Clothes</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+
+          <div class="third-info">
+            <h4>Customer Service</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Returns & Exchanges</a></p>
+            <p><a href="#">Shipping Information</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms & Conditions</a></p>
+          </div>
+
+          <div class="fourth-info">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter to get the latest updates and offers.</p>
+            <form>
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Filters -->
+    <script src="clothes.js"></script>
+</body> 
+</html>

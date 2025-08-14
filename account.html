@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toro • Account</title>
+
+  <link rel="stylesheet" href="account.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="header__bar">Free Shipping on Orders Over $50</div>
+    <nav class="nav-bar">
+      <a href="home.html" class="nav-logo">Toro</a>
+      <ul class="nav-links" id="nav-links">
+        <li class="link"><a href="home.html">HOME</a></li>
+        <li class="link"><a href="clothes.html">CLOTHES</a></li>
+        <li class="link"><a href="contact.html">CONTACT US</a></li>
+      </ul>
+      <div class="nav-icons">
+        <span><a href="account.html" class="user-link"><i class="fa-regular fa-user"></i></a></span>
+        <span id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <span class="cart-icon" id="cart-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        <span class="fav-icon" id="fav-icon"><i class="fa-solid fa-heart"></i></span>
+        <span class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Nav Search Dropdown -->
+  <div class="nav-search" id="nav-search">
+    <div class="nav-search-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" id="nav-search-input" placeholder="Search products or categories" autocomplete="off" />
+      <div class="suggestions" id="nav-suggestions"></div>
+      <button class="nav-search-close" id="nav-search-close" aria-label="Close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <main class="account">
+    <div class="account-container">
+      <div class="auth-views" id="auth-views">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="signin">Sign In</button>
+          <button class="auth-tab" data-tab="signup">Create Account</button>
+        </div>
+        <div class="auth-panels">
+          <form class="auth-panel" id="panel-signin" data-panel="signin">
+            <div class="field">
+              <label>Email</label>
+              <input type="email" id="signin-email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" id="signin-password" placeholder="Your password" required />
+            </div>
+            <button type="submit" class="primary-btn">Sign In</button>
+          </form>
+
+          <form class="auth-panel hidden" id="panel-signup" data-panel="signup">
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" id="signup-name" placeholder="John Doe" required />
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" id="signup-email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label>Phone Number</label>
+              <input type="tel" id="signup-phone" placeholder="+1 234 567 890" inputmode="tel" pattern="^[0-9+()\s-]{7,}$" required />
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" id="signup-password" placeholder="Create a password" minlength="6" required />
+            </div>
+            <div class="field">
+              <label>Confirm Password</label>
+              <input type="password" id="signup-password2" placeholder="Re-enter password" minlength="6" required />
+            </div>
+            <button type="submit" class="primary-btn">Create Account</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="account-views hidden" id="account-views">
+        <div class="welcome">
+          <h2>Welcome, <span id="acc-name"></span></h2>
+          <p class="muted">Signed in as <span id="acc-email"></span></p>
+        </div>
+        <div class="account-cards">
+          <div class="acc-card">
+            <h4>Profile</h4>
+            <p>Update your display name and email.</p>
+            <form id="profile-form">
+              <div class="field"><label>Full Name</label><input id="profile-name" type="text" /></div>
+              <div class="field"><label>Email</label><input id="profile-email" type="email" /></div>
+              <button type="submit" class="secondary-btn">Save Changes</button>
+            </form>
+          </div>
+          <div class="acc-card">
+            <h4>Security</h4>
+            <p>Change your password.</p>
+            <form id="password-form">
+              <div class="field"><label>New Password</label><input id="profile-password" type="password" /></div>
+              <button type="submit" class="secondary-btn">Update Password</button>
+            </form>
+          </div>
+          <div class="acc-card danger">
+            <h4>Sign Out</h4>
+            <p>End your current session on this device.</p>
+            <button id="signout-btn" class="danger-btn">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="first-info">
+        <a href="#" class="footer-logo">Toro</a>
+        <p>325 5th Avenue, New York, NY 10001</p>
+        <p>Phone: +1 (123) 456-7890</p>
+        <p>Email: info@toro.com</p>
+        <div class="social-icon">
+          <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="second-info">
+        <h4>Information</h4>
+        <p><a href="home.html">Home</a></p>
+        <p><a href="clothes.html">Clothes</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+
+      <div class="third-info">
+        <h4>Customer Service</h4>
+        <p><a href="#">Help Center</a></p>
+        <p><a href="#">Returns & Exchanges</a></p>
+        <p><a href="#">Shipping Information</a></p>
+        <p><a href="#">Privacy Policy</a></p>
+        <p><a href="#">Terms & Conditions</a></p>
+      </div>
+
+      <div class="fourth-info">
+        <h4>Newsletter</h4>
+        <p>Subscribe to our newsletter to get the latest updates and offers.</p>
+        <form>
+          <input type="email" placeholder="Enter your email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script src="account.js"></script>
+</body>
+</html>
+
+

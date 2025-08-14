@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toro</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="home.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+    <header>
+        <div class="header__bar">Free Shipping on Orders Over $50</div>
+        <nav class="nav-bar">
+          <a href="home.html" class="nav-logo">Toro</a>
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li class="link"><a href="home.html" class="active">HOME</a></li>
+                <li class="link"><a href="clothes.html">CLOTHES</a></li>
+                <li class="link"><a href="contact.html">CONTACT US</a></li>
+            </ul>
+
+            <!-- Navigation Icons -->
+            <div class="nav-icons">
+                <span><a href="account.html" class="user-link"><i class="fa-regular fa-user"></i></a></span>
+                <span id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span class="cart-icon" id="cart-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+                <span class="fav-icon" id="fav-icon"><i class="fa-solid fa-heart"></i></span>
+                <!-- Burger Menu Icon -->
+                <span class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Nav Search Dropdown -->
+    <div class="nav-search" id="nav-search">
+        <div class="nav-search-inner">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" id="nav-search-input" placeholder="Search products or categories" autocomplete="off" />
+            <div class="suggestions" id="nav-suggestions"></div>
+            <button class="nav-search-close" id="nav-search-close" aria-label="Close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Hero -->
+     <section class="main-home">
+        <div class="main-text">
+            <h5>Summer Collection</h5>
+            <h1>New summer <br>Collection 2025</h1>
+            <p>Discover the latest trends and styles for the summer season.</p>
+
+            <a href="clothes.html" class="main-btn">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div> 
+     </section>
+    <!-- New Collection Section -->
+    <section class="new-collection">
+        <div class="images">
+            <div class="card">
+               <img src="images/WhatsApp Image 2025-08-05 at 3.05.55 PM.jpeg" alt="Product 2">
+            </div>
+            <div class="card">
+              <img src="images/xqhorhc0g0zegple3jv0ymrlxfwy.webp" alt="Product 1">
+            </div>
+            <div class="card">
+              <img src="images/WhatsApp Image 2025-08-05 at 3.05.57 PM.jpeg" alt="Product 3">
+            </div>
+        </div>
+
+        <div class="collection-info">
+          <h2>New Collection</h2>
+          <p class="item-count">#35 ITEMS</p>
+          <h4>Available on Store</h4>
+          <a href="clothes.html" class="main-btn">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+          <div class="first-info">
+            <a href="#" class="footer-logo">Toro</a>
+
+            <p>325 5th Avenue, New York, NY 10001</p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: info@toro.com</p>
+
+            <div class="social-icon">
+              <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="second-info">
+            <h4>Information</h4>
+            <p><a href="home.html">Home</a></p>
+            <p><a href="clothes.html">Clothes</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+
+          <div class="third-info">
+            <h4>Customer Service</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Returns & Exchanges</a></p>
+            <p><a href="#">Shipping Information</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms & Conditions</a></p>
+          </div>
+
+          <div class="fourth-info">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter to get the latest updates and offers.</p>
+            <form>
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+    </footer>
+      
+
+
+  <!-- JavaScript for Toggle Menu -->
+  <script src="home.js"></script>
+</body>
+</html>

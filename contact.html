@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toro</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="contact.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Remix Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <header>
+    <div class="header__bar">Free Shipping on Orders Over $50</div>
+    <nav class="nav-bar">
+      <a href="home.html" class="nav-logo">Toro</a>
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="nav-links">
+        <li class="link"><a href="home.html" ">HOME</a></li>
+        <li class="link"><a href="clothes.html">CLOTHES</a></li>
+        <li class="link"><a href="contact.html" class="active">CONTACT US</a></li>
+      </ul>
+
+      <!-- Navigation Icons -->
+      <div class="nav-icons">
+        <span><a href="account.html" class="user-link"><i class="fa-regular fa-user"></i></a></span>
+        <span id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <span class="cart-icon" id="cart-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+        <span class="fav-icon" id="fav-icon"><i class="fa-solid fa-heart"></i></span>
+        <!-- Burger Menu Icon -->
+        <span class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Nav Search Dropdown -->
+    <div class="nav-search" id="nav-search">
+    <div class="nav-search-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" id="nav-search-input" placeholder="Search products or categories" autocomplete="off" />
+      <div class="suggestions" id="nav-suggestions"></div>
+      <button class="nav-search-close" id="nav-search-close" aria-label="Close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contactUs">
+    <div class="title">
+      <h2>Contact Us</h2>
+    </div>
+
+    <div class="box">
+      <!-- contact form -->
+      <div class="contact form">
+        <h3>Send a message</h3>
+        <form action="">
+          <div class="formBox">
+            <div class="row50">
+              <div class="inputBox">
+                <span>First Name</span>
+                <input type="text" placeholder="John" />
+              </div>
+              <div class="inputBox">
+                <span>Last Name</span>
+                <input type="text" placeholder="Doe" />
+              </div>
+            </div>
+
+            <div class="row50">
+              <div class="inputBox">
+                <span>Email Address</span>
+                <input type="email" placeholder="john@example.com" />
+              </div>
+              <div class="inputBox">
+                <span>Phone Number</span>
+                <input type="tel" placeholder="+1234567890" />
+              </div>
+            </div>
+
+            <div class="row100">
+              <div class="inputBox">
+                <span>Message</span>
+                <textarea placeholder="Write your message here..."></textarea>
+              </div>
+            </div>
+
+            <div class="row100">
+              <div class="inputBox">
+                <input type="submit" value="Send" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- info box -->
+      <div class="contact info">
+        <h3>Contact Information</h3>
+        <ul class="infoList">
+          <li><strong>Email:</strong> support@example.com</li>
+          <li><strong>Phone:</strong> +1 234 567 890</li>
+          <li><strong>Address:</strong> 123 Main St, City</li>
+        </ul>
+        <div class="social-icon">
+              <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+      </div>
+
+      <!-- map -->
+      <div class="contact map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.084758674028!2d-122.4194154846827!3d37.77492927975973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064df7a37d3%3A0xdeb9f8f26d6c1234!2sSan%20Francisco!5e0!3m2!1sen!2sus!4v1691490362345!5m2!1sen!2sus"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+          <div class="first-info">
+            <a href="#" class="footer-logo">Toro</a>
+
+            <p>325 5th Avenue, New York, NY 10001</p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: info@toro.com</p>
+
+            <div class="social-icon">
+              <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="second-info">
+            <h4>Information</h4>
+            <p><a href="home.html">Home</a></p>
+            <p><a href="clothes.html">Clothes</a></p>
+            <p><a href="contact.html">Contact</a></p>
+          </div>
+
+          <div class="third-info">
+            <h4>Customer Service</h4>
+            <p><a href="#">Help Center</a></p>
+            <p><a href="#">Returns & Exchanges</a></p>
+            <p><a href="#">Shipping Information</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms & Conditions</a></p>
+          </div>
+
+          <div class="fourth-info">
+            <h4>Newsletter</h4>
+            <p>Subscribe to our newsletter to get the latest updates and offers.</p>
+            <form>
+              <input type="email" placeholder="Enter your email" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+    </footer>
+
+    <script src="contact.js"></script>
+</body>
+</html>
