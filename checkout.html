@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toro - Checkout</title>
+  <link rel="stylesheet" href="checkout.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <header class="checkout-header">
+    <div class="container">
+      <a href="home.html" class="brand">Toro</a>
+      <nav class="crumbs">
+        <a href="clothes.html">Cart</a>
+        <span class="sep">›</span>
+        <span class="current">Checkout</span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="checkout">
+    <div class="container checkout-grid">
+      <section class="checkout-form">
+        <h2>Shipping information</h2>
+        <form id="shipping-form" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="first-name">First name</label>
+              <input id="first-name" type="text" autocomplete="given-name" required />
+            </div>
+            <div class="field">
+              <label for="last-name">Last name</label>
+              <input id="last-name" type="text" autocomplete="family-name" required />
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="address">Address</label>
+            <input id="address" type="text" autocomplete="street-address" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" type="text" autocomplete="address-level2" required />
+            </div>
+            <div class="field">
+              <label for="state">State/Region</label>
+              <input id="state" type="text" autocomplete="address-level1" required />
+            </div>
+            <div class="field">
+              <label for="zip">ZIP/Postal code</label>
+              <input id="zip" type="text" autocomplete="postal-code" required />
+            </div>
+          </div>
+
+          <h2>Payment</h2>
+          <div class="field">
+            <label for="card-name">Name on card</label>
+            <input id="card-name" type="text" autocomplete="cc-name" required />
+          </div>
+          <div class="field">
+            <label for="card-number">Card number</label>
+            <input id="card-number" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="exp">Expiry</label>
+              <input id="exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" required />
+            </div>
+            <div class="field">
+              <label for="cvc">CVC</label>
+              <input id="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" required />
+            </div>
+          </div>
+
+          <button type="submit" class="place-order">Place order</button>
+          <p class="secure-note"><i class="fa-solid fa-lock"></i> Payments are simulated for demo purposes.</p>
+        </form>
+      </section>
+
+      <aside class="order-summary">
+        <h3>Order summary</h3>
+        <div id="summary-items" class="summary-items"></div>
+        <div class="summary-line"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+        <div class="summary-line"><span>Shipping</span><span id="sum-shipping">Free</span></div>
+        <div class="summary-total"><span>Total</span><span id="sum-total">$0.00</span></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="checkout-footer">
+    <div class="container">
+      <a href="clothes.html" class="link"><i class="fa-solid fa-arrow-left"></i> Back to shop</a>
+    </div>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
+

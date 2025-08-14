@@ -576,8 +576,14 @@ document.addEventListener("click", function (e) {
 });
 
 // ======= Cart =======
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("toro_cart") || "[]");
 let cartTotal = 0;
+
+function saveCart() {
+  try {
+    localStorage.setItem("toro_cart", JSON.stringify(cart));
+  } catch (_) {}
+}
 
 function addToCart(productName, productPrice, selectedColor, productImage, quantityOverride, selectedSize) {
   const existingItem = cart.find(
@@ -599,6 +605,7 @@ function addToCart(productName, productPrice, selectedColor, productImage, quant
 
   updateCartDisplay();
   updateCartCount(); // <-- shows/hides the badge
+  saveCart();
 }
 
 function updateCartCount() {
@@ -653,12 +660,14 @@ function updateQuantity(index, change) {
   if (cart[index].quantity <= 0) cart.splice(index, 1);
   updateCartDisplay();
   updateCartCount();
+  saveCart();
 }
 
 function removeFromCart(index) {
   cart.splice(index, 1);
   updateCartDisplay();
   updateCartCount();
+  saveCart();
 }
 
 // ======= Cart open/close =======
@@ -722,13 +731,15 @@ if (checkoutBtn) {
       alert("Your cart is empty!");
       return;
     }
-    alert(`Proceeding to checkout with ${cart.length} items. Total: $${cartTotal.toFixed(2)}`);
+    saveCart();
+    window.location.href = "checkout.html";
   });
 }
 
 // ======= Init on load =======
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();   // ensures badge starts hidden if 0
+  updateCartDisplay(); // render saved cart on load
   // filterProducts(); // optional: render with current filters on load
   updateFavCount();
   // Seed search from URL if provided
